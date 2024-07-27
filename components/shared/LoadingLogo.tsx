@@ -4,7 +4,7 @@ type Props = {
     size?:number;
 }
 
-const loadingLogo = ({size=100}:Props)=>{
+const loadingLogo = ({size=50}:Props)=>{
   return (
   <div className="h-full w-full flex justify-center items-center ">
         <Image src="/logo.svg" alt="Logo" width={size} height={size} className="animate-pulse duration-800"/>
