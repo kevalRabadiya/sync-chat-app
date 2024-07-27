@@ -1,7 +1,9 @@
-import {Button} from '../components/ui/button'
+import { SignIn} from '@clerk/nextjs'
 
 export default function Home() {
   return (
-    <Button>Welcome!</Button>
+     <div className='h-full w-full flex justify-center items-center'>
+       <SignIn/>
+     </div>
   )
 }
