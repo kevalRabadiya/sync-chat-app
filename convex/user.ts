@@ -18,6 +18,6 @@ export const get = internalQuery({
     args: {clerkId: v.string()},
     handler:async(ctx, args)=>{
         return ctx.db.query("users")
-        .withIndex("by_clerkId",q=>q.eq("clerkId",args.clerkId))
+        .withIndex("by_clerkId",q=>q.eq("clerkId",args.clerkId)).unique()
     },
 })
