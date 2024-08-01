@@ -9,16 +9,16 @@ import LoadingLogo from '../components/shared/LoadingLogo';
 type Props = {
     children:React.ReactNode
 };
-const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL || "";
+const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL!;
 const convex = new ConvexReactClient(CONVEX_URL)
 
 const ConvexClientProvider = ({children}:Props)=>{
     return(
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
         <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
-            <Authenticated>{children}</Authenticated>
+           {children}
             <AuthLoading><LoadingLogo/></AuthLoading>
-        </ConvexProviderWithClerk>
+        </ConvexProviderWithClerk>  
     </ClerkProvider>
 )}
 

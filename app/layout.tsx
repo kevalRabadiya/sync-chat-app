@@ -1,5 +1,5 @@
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import './globals.css';
+import ConvexClientProvider from '@/providers/ConvexClientProvider';
 
 export default function RootLayout({
   children,
@@ -7,22 +7,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <body>
-          <header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-          <main>
+           <ConvexClientProvider>
             {children}
-          </main>
+           </ConvexClientProvider>
         </body>
       </html>
-    </ClerkProvider>
   )
 }
