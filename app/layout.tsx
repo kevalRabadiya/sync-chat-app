@@ -1,3 +1,4 @@
+import { TooltipProvider } from '@radix-ui/react-tooltip';
 import './globals.css';
 import ConvexClientProvider from '@/providers/ConvexClientProvider';
 
@@ -10,7 +11,9 @@ export default function RootLayout({
       <html lang="en">
         <body>
            <ConvexClientProvider>
+            <TooltipProvider>
             {children}
+            </TooltipProvider>
            </ConvexClientProvider>
         </body>
       </html>
