@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/card"
+import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useConversation } from "@/hooks/useConversation"
 import { useNavigation } from "@/hooks/useNavigation"
@@ -14,7 +15,7 @@ const {isActive} = useConversation()
 if (isActive) return null;
   return (
     <>
-      <Card className="fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-2 md:flex lg:hidden ">
+      <Card className="fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-1 md:flex lg:hidden bg-neutral-100">
       <nav className="w-full">
         <ul className="flex justify-evenly items-center">
             {
@@ -31,6 +32,9 @@ if (isActive) return null;
                 </li>
             })
             }
+        <li>
+        <ThemeToggle/>
+      </li>
       <li>
         <UserButton/>
       </li>
