@@ -12,7 +12,7 @@ const DesktopNav = () => {
 const paths = useNavigation()
   return (
     <>
-      <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg:py-3 bg-neutral-100">
+      <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg:py-3">
       <nav>
         <ul className="flex flex-col items-center gap-4">
             {
