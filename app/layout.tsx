@@ -2,6 +2,7 @@ import { TooltipProvider } from '@radix-ui/react-tooltip';
 import './globals.css';
 import ConvexClientProvider from '@/providers/ConvexClientProvider';
 import { ThemeProvider } from '@/components/ui/theme/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
 
 export default function RootLayout({
   children,
@@ -19,6 +20,7 @@ export default function RootLayout({
             <TooltipProvider>
             {children}
             </TooltipProvider>
+            <Toaster/>
            </ConvexClientProvider>
           </ThemeProvider>
         </body>
