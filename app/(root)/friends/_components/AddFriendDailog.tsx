@@ -10,23 +10,37 @@ import { Button } from '@/components/ui/Button'
 import { UserPlus } from 'lucide-react'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useMutationState } from '@/hooks/useMutationState'
+import { api } from '@/convex/_generated/api'
+import { toast } from 'sonner'
+import { ConvexError } from 'convex/values'
 
-type Props = {}
 
 const addFriendSchema = z.object({
     // It is Show when below <FormMessage/> render 
     email:z.string().min(1,{message:'this field can not empty'}).email("✉️ Enter valid Email..")
 })
 
-const AddFriendDailog = (props: Props) => {
+const AddFriendDailog = () => {
+
+const {mutate:createRequest,pending} = useMutationState(api.request.create)
 const form = useForm<z.infer<typeof addFriendSchema>>({
     resolver:zodResolver(addFriendSchema),
     defaultValues:{email:""}
 })
 
-const handleSubmit = ()=>{
-
+const handleSubmit = async (values:z.infer<typeof addFriendSchema>)=>{
+    await createRequest({email:values.email})
+    .then(()=>{
+        form.reset()
+        toast.success("Request Successfully Sent!")
+    })
+    .catch(err=>{toast.error(err instanceof ConvexError 
+        ? err.data 
+        :"Unexpected error occurred!")
+    })
 }
+
  return (
     <>
         <Dialog>
@@ -63,4 +77,4 @@ const handleSubmit = ()=>{
   )
 }
 
-export default AddFriendDailog
+export default AddFriendDailog;
