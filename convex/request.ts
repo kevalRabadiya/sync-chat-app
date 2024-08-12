@@ -1,5 +1,5 @@
 import { ConvexError, v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation} from "./_generated/server";
 import { getUserByClerkId } from "./_utils";
 
 
@@ -33,8 +33,8 @@ export const create = mutation({
         const RequestAlreadyReceive = await ctx.db.query('requests').withIndex('by_receiver_sender',(q)=>q.eq('receiver',currentUser._id).eq('sender',receiver._id)).unique()
         if(RequestAlreadyReceive) throw new ConvexError('Request Already Receive')
 
-        const request = await ctx.db.insert("requests",{
         // @ts-ignore
+        const request = await ctx.db.insert("requests",{
         sender:currentUser._id,
         receiver:receiver._id
         });
